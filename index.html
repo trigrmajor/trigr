@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>trigr - Pre-Registration & Open Event</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="trigr - Pre-Registration & Open Event">
+    <meta property="og:description" content="더 신나게 즐기고, 더 크게 받아라! trigr 8월 18일 콘캔 오픈 및 사전예약 진행 중!">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1s-nNiacy0GQAeMyu3daqGDUSg6QO6--Z">
+    <meta property="og:url" content="https://trigrthailand.netlify.app">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1s-nNiacy0GQAeMyu3daqGDUSg6QO6--Z">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&family=Orbitron:wght@700;900&family=Sarabun:wght@600;800&display=swap');
+
+        :root {
+            --pink: #DE5DE2;
+            --purple: #A035E5;
+            --dark: #06040a;
+            --gray-dark: #1E1B24;
+            --gray-light: #AFAFAF;
+            --cyan: #46E6F2;
+            --gold: #FFC93C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: #000;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Noto Sans KR', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 📱 모바일 세로 스크롤 최적화 컨테이너 */
+        .app-container {
+            width: 100%;
+            max-width: 480px; /* 모바일 세로 화면 규격 최적화 */
+            min-height: 100vh;
+            background-color: var(--dark);
+            position: relative;
+            box-shadow: 0 0 35px rgba(160, 53, 229, 0.25);
+            display: flex;
+            flex-direction: column; /* 무조건 세로 한 줄 배치 보장 */
+            gap: 20px;
+            padding: 0 16px 60px 16px;
+            overflow-x: hidden;
+        }
+
+        /* 컨트롤 버튼 (BGM & Admin) - 상단 고정 */
+        .floating-controls {
+            position: fixed;
+            top: 12px;
+            right: calc(50% - 228px);
+            z-index: 1000;
+            display: flex;
+            gap: 6px;
+        }
+        @media (max-width: 480px) {
+            .floating-controls {
+                right: 12px;
+            }
+        }
+        .btn-control {
+            background: rgba(18, 14, 26, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .btn-control:hover, .btn-control.active {
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px rgba(70, 230, 242, 0.5);
+            color: var(--cyan);
+        }
+
+        /* 1. 히어로 섹션 */
+        .hero {
+            text-align: center;
+            padding: 48px 10px 24px;
+            margin: 0 -16px;
+            position: relative;
+            background: radial-gradient(circle at center 40%, rgba(160, 53, 229, 0.35) 0%, transparent 75%);
+            border-bottom: 1px solid rgba(222, 93, 226, 0.2);
+        }
+
+        .coming-soon {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: inline-block;
+            text-shadow: 0 0 10px rgba(70, 230, 242, 0.8);
+            font-weight: 700;
+        }
+
+        .logo-static {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.4rem;
+            font-weight: 900;
+            text-transform: lowercase;
+            display: block;
+            margin: 5px 0 15px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--pink), 0 0 25px var(--purple), 0 0 45px var(--purple);
+            line-height: 1;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .countdown-box {
+            background: rgba(30, 27, 36, 0.9);
+            border: 1px solid var(--cyan);
+            border-radius: 10px;
+            padding: 10px 6px;
+            min-width: 65px;
+            flex: 1;
+            max-width: 75px;
+            box-shadow: 0 0 12px rgba(70, 230, 242, 0.25);
+        }
+        .countdown-time {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--cyan);
+            display: block;
+            line-height: 1.1;
+        }
+        .countdown-label {
+            font-size: 0.65rem;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .slogan-box {
+            margin: 20px 16px 0;
+            padding: 16px 12px;
+            background: linear-gradient(90deg, rgba(222, 93, 226, 0.05), rgba(222, 93, 226, 0.18), rgba(222, 93, 226, 0.05));
+            border-top: 1px solid var(--pink);
+            border-bottom: 1px solid var(--pink);
+            border-radius: 8px;
+        }
+        .slogan-th {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 201, 60, 0.6);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .slogan-sub {
+            font-size: 0.82rem;
+            color: #fff;
+            opacity: 0.95;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        /* 2. 브랜드 소개 박스 */
+        .brand-intro-section {
+            background: linear-gradient(145deg, rgba(30, 25, 40, 0.9), rgba(15, 12, 20, 0.95));
+            border: 1px solid rgba(160, 53, 229, 0.5);
+            box-shadow: 0 0 20px rgba(160, 53, 229, 0.15);
+            border-radius: 16px;
+            padding: 24px 18px;
+            text-align: center;
+            position: relative;
+        }
+        .brand-intro-logo {
+            max-width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 14px;
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 10px rgba(222, 93, 226, 0.4));
+        }
+        .brand-intro-text {
+            font-size: 0.88rem;
+            color: #E0E0E0;
+            line-height: 1.65;
+            word-break: keep-all;
+        }
+        .brand-intro-highlight {
+            color: var(--cyan);
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-top: 12px;
+            display: block;
+            text-shadow: 0 0 8px rgba(70, 230, 242, 0.4);
+            line-height: 1.4;
+        }
+
+        /* 공통 네온 박스 (모바일 너비 꽉 차게 최적화) */
+        .neon-box {
+            background: rgba(28, 25, 35, 0.75);
+            border: 1px solid var(--purple);
+            box-shadow: 0 0 18px rgba(222, 93, 226, 0.15), inset 0 0 15px rgba(160, 53, 229, 0.12);
+            border-radius: 16px;
+            padding: 24px 16px;
+            width: 100%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #fff;
+            line-height: 1.3;
+        }
+        .section-title span {
+            color: var(--pink);
+            text-shadow: 0 0 8px rgba(222, 93, 226, 0.5);
+        }
+
+        /* 3. 사전예약 및 케이크 섹션 */
+        .current-count-display {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+            text-shadow: 0 0 12px rgba(255, 201, 60, 0.6);
+            font-weight: 900;
+        }
+
+        .cake-container {
+            text-align: center;
+            margin: 15px 0;
+            height: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        
+        .gauge-wrapper {
+            margin: 25px 0 20px;
+            position: relative;
+        }
+        .gauge-bar-bg {
+            width: 100%;
+            height: 14px;
+            background: rgba(10, 8, 15, 0.8);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+        .gauge-bar-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, var(--purple), var(--pink), var(--cyan));
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+            box-shadow: 0 0 12px var(--pink);
+        }
+        .gauge-markers {
+            position: relative;
+            width: 100%;
+            height: 22px;
+            margin-top: 6px;
+            font-size: 0.72rem;
+            color: var(--gray-light);
+        }
+        .marker {
+            position: absolute;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .marker::before {
+            content: '';
+            width: 2px;
+            height: 5px;
+            background: var(--gray-light);
+            margin-bottom: 2px;
+        }
+        .marker:nth-child(1) { left: 20%; } 
+        .marker:nth-child(2) { left: 40%; } 
+        .marker:nth-child(3) { left: 60%; } 
+        .marker:nth-child(4) { left: 80%; } 
+        .marker:nth-child(5) { 
+            left: 99%; 
+            transform: translateX(-100%); 
+            white-space: nowrap;
+            align-items: flex-end;
+        }
+
+        .reward-info {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-top: 15px;
+        }
+        .reward-card {
+            background: rgba(15, 12, 20, 0.7);
+            border: 1px solid #3a3a3a;
+            padding: 8px 2px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .reward-card.active {
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px rgba(70, 230, 242, 0.3);
+            background: rgba(70, 230, 242, 0.12);
+        }
+        .reward-num {
+            font-weight: 700;
+            color: var(--pink);
+            margin-bottom: 3px;
+            display: block;
+            font-size: 0.65rem;
+        }
+        .reward-val {
+            font-size: 0.72rem;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .mango-notice {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(255, 201, 60, 0.08);
+            border: 1px dashed var(--gold);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--gold);
+            line-height: 1.5;
+        }
+
+        /* 입력 폼 스타일 */
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--gray-light);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .os-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .os-btn {
+            background: var(--gray-dark);
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.25s;
+            font-size: 0.9rem;
+        }
+        .os-btn.selected {
+            border-color: var(--pink);
+            background: rgba(222, 93, 226, 0.22);
+            box-shadow: 0 0 12px rgba(222, 93, 226, 0.4);
+            color: #fff;
+        }
+
+        .input-with-btn {
+            display: flex;
+            gap: 8px;
+            width: 100%;
+        }
+        @media (max-width: 480px) {
+            .input-with-btn {
+                flex-direction: column;
+            }
+        }
+        .form-input {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+            background: rgba(15, 12, 20, 0.8);
+            border: 1px solid #444;
+            padding: 13px 14px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px rgba(70, 230, 242, 0.3);
+        }
+        .btn-sub {
+            background: var(--purple);
+            color: #fff;
+            border: none;
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.25s;
+            flex-shrink: 0;
+            font-size: 0.88rem;
+            box-shadow: 0 0 10px rgba(160, 53, 229, 0.4);
+        }
+        .btn-sub:hover {
+            background: var(--pink);
+            box-shadow: 0 0 12px var(--pink);
+        }
+
+        /* 약관 동의 그룹 */
+        .terms-group {
+            background: rgba(15, 12, 20, 0.6);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+        .term-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            color: #d0d0d0;
+            cursor: pointer;
+            line-height: 1.3;
+        }
+        .term-item:last-child {
+            margin-bottom: 0;
+        }
+        .term-item input[type="checkbox"] {
+            accent-color: var(--pink);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .term-all {
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            background: linear-gradient(90deg, var(--purple), var(--pink));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(222, 93, 226, 0.5);
+            transition: all 0.3s;
+        }
+        .btn-submit:disabled {
+            background: var(--gray-dark);
+            color: #666;
+            box-shadow: none;
+            cursor: not-allowed;
+            border: 1px solid #333;
+        }
+        .btn-submit:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(222, 93, 226, 0.8);
+        }
+
+        /* 스토어 버튼 */
+        .store-promo-group {
+            margin-top: 24px;
+            padding: 18px 14px;
+            background: linear-gradient(135deg, rgba(70, 230, 242, 0.08) 0%, rgba(160, 53, 229, 0.08) 100%);
+            border: 1px solid rgba(70, 230, 242, 0.35);
+            border-radius: 12px;
+            text-align: center;
+        }
+        .store-promo-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            line-height: 1.45;
+            text-shadow: 0 0 8px rgba(70, 230, 242, 0.4);
+        }
+        .store-btn-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .store-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #0a0810;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+        .store-btn:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 12px rgba(70, 230, 242, 0.4);
+            transform: translateY(-2px);
+        }
+        .store-btn-icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        .store-btn-text {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .store-btn-sub {
+            font-size: 0.65rem;
+            color: var(--gray-light);
+            line-height: 1.1;
+        }
+        .store-btn-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 2px;
+        }
+
+/* 4. 런칭 미션 & 오토바이 경품 (깨짐 완벽 방지) */
+        .raffle-single {
+            background: rgba(20, 16, 26, 0.8);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            /* 위쪽 패딩을 늘려 이미지와 상단 배지 사이 공간을 확보합니다 */
+            padding: 38px 15px 18px; 
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 201, 60, 0.2);
+            position: relative;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .raffle-single::before {
+            content: '1명 추첨';
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: var(--gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            box-shadow: 0 0 8px var(--gold);
+            /* z-index를 추가하여 이미지가 배지를 가리지 않도록 확실히 처리 */
+            z-index: 2; 
+        }
+        .promo-img-unified {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            /* 상단 마진은 0으로 두고, 컨테이너(raffle-single)의 패딩으로 여백을 조절 */
+            margin: 0 auto 14px;
+            border-radius: 12px;
+            filter: drop-shadow(0 0 10px rgba(255, 201, 60, 0.25));
+            background-color: #15111d;
+            min-height: 160px;
+            object-fit: cover;
+            position: relative;
+        }        .raffle-name {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 201, 60, 0.6);
+            margin-bottom: 4px;
+        }
+        
+        /* [중요] 레이아웃 깨짐을 유발하던 center 태그 제거 및 구조 리팩토링 */
+        .raffle-mission-desc {
+            text-align: center;
+            margin-top: 15px;
+            padding: 0 4px;
+        }
+        .raffle-mission-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+        .raffle-mission-hl {
+            font-size: 0.95rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            word-break: keep-all;
+        }
+        .raffle-mission-hl strong {
+            color: var(--cyan);
+            text-shadow: 0 0 8px rgba(70, 230, 242, 0.5);
+            font-weight: 800;
+        }
+        .raffle-mission-sub {
+            font-size: 0.82rem;
+            color: var(--gray-light);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            word-break: keep-all;
+        }
+        .disclaimer {
+            font-size: 0.72rem;
+            color: #888;
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .btn-scroll-action {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #1f1c2c, #928DAB);
+            border: 1px solid var(--cyan);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(70, 230, 242, 0.3);
+            transition: all 0.3s;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+        .btn-scroll-action:hover {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            color: #000;
+        }
+
+        /* 5. 오픈 행사 카드 */
+        .open-event-card {
+            background: rgba(15, 12, 20, 0.75);
+            border: 1px solid var(--cyan);
+            border-radius: 14px;
+            padding: 18px 16px;
+            margin-top: 16px;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(70, 230, 242, 0.15);
+        }
+        .open-event-date {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 14px;
+            line-height: 1.45;
+            text-shadow: 0 0 8px rgba(255, 201, 60, 0.4);
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 201, 60, 0.3);
+        }
+        .open-event-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .open-event-list li {
+            font-size: 0.88rem;
+            color: #E0E0E0;
+            margin-bottom: 10px;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.4;
+        }
+        .open-event-list li:last-child {
+            margin-bottom: 0;
+        }
+        .open-event-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            top: -1px;
+            font-size: 0.85rem;
+            color: var(--cyan);
+        }
+
+        /* 노슬비 미션 박스 */
+        .mission-special-box {
+            background: rgba(20, 12, 25, 0.85);
+            border: 1px solid var(--pink);
+            border-radius: 14px;
+            padding: 20px 16px;
+            margin-top: 16px;
+            text-align: center;
+            box-shadow: 0 0 18px rgba(222, 93, 226, 0.2);
+        }
+        .mission-special-title {
+            color: var(--pink);
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px rgba(222, 93, 226, 0.5);
+        }
+
+        /* 6. 앱 이벤트 소개 */
+        .event-intro {
+            font-size: 0.88rem;
+            color: var(--cyan);
+            text-align: center;
+            line-height: 1.55;
+            margin-bottom: 20px;
+            padding: 12px 10px;
+            background: rgba(70, 230, 242, 0.08);
+            border-radius: 10px;
+            border: 1px solid rgba(70, 230, 242, 0.2);
+            word-break: keep-all;
+        }
+        .mission-group {
+            background: rgba(18, 15, 24, 0.85);
+            border-left: 4px solid var(--pink);
+            padding: 16px;
+            margin-bottom: 14px;
+            border-radius: 0 12px 12px 0;
+            text-align: left;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .mission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+        .mission-title-text {
+            font-weight: 800;
+            color: var(--gold);
+            font-size: 0.95rem;
+            flex: 1;
+            line-height: 1.35;
+        }
+        .event-info-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(222, 93, 226, 0.3);
+            box-shadow: 0 0 10px rgba(222, 93, 226, 0.3);
+            flex-shrink: 0;
+            background-color: #2b2b2b;
+        }
+        .mission-count {
+            color: var(--pink);
+            font-weight: 800;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            background: rgba(222, 93, 226, 0.15);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .mission-desc-text {
+            font-size: 0.84rem;
+            color: #d8d8d8;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        /* 7. 기대평 게시판 */
+        .share-promo-box {
+            background: rgba(18, 14, 25, 0.9);
+            border: 1px dashed var(--pink);
+            border-radius: 14px;
+            padding: 20px 16px;
+            margin-bottom: 22px;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(222, 93, 226, 0.12);
+        }
+        .share-promo-img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(222, 93, 226, 0.4);
+            margin: 0 auto 12px;
+            display: block;
+            box-shadow: 0 0 10px rgba(222, 93, 226, 0.3);
+        }
+
+        .board-input-box {
+            background: rgba(18, 15, 24, 0.8);
+            border: 1px solid #3d3d3d;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .board-comment-list {
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .board-comment-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .board-comment-list::-webkit-scrollbar-thumb {
+            background: var(--purple);
+            border-radius: 3px;
+        }
+        .comment-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 3px solid var(--cyan);
+            padding: 12px 14px;
+            border-radius: 8px;
+            text-align: left;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.78rem;
+        }
+        .comment-author {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .comment-time {
+            color: var(--gray-light);
+            font-size: 0.7rem;
+        }
+        .comment-text {
+            font-size: 0.85rem;
+            color: #E0E0E0;
+            line-height: 1.45;
+            word-break: break-all;
+        }
+
+        /* 8. 푸터 */
+        .footer {
+            text-align: center;
+            padding: 32px 16px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 10px;
+        }
+        .btn-insta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            box-shadow: 0 0 18px rgba(220, 39, 67, 0.4);
+            font-size: 0.95rem;
+        }
+        .footer-info {
+            font-size: 0.78rem;
+            color: var(--gray-light);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+        .footer-domain {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan);
+            font-weight: bold;
+            margin-top: 12px;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .svg-glow-pink { filter: drop-shadow(0 0 8px var(--pink)); }
+        .svg-glow-purple { filter: drop-shadow(0 0 8px var(--purple)); }
+        .svg-glow-cyan { filter: drop-shadow(0 0 8px var(--cyan)); }
+        
+        .sparkle {
+            animation: sparkle-anim 1s infinite alternate;
+            transform-origin: center;
+        }
+        @keyframes sparkle-anim {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .admin-panel {
+            display: none;
+            background: #1a0022;
+            border: 2px dashed var(--gold);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .admin-panel.show {
+            display: block;
+        }
+        .admin-slider {
+            width: 100%;
+            margin: 10px 0;
+            accent-color: var(--pink);
+        }
+
+        [contenteditable="true"] {
+            outline: 1px dashed var(--cyan);
+            padding: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<audio id="bgm" src="https://drive.usercontent.google.com/download?id=1hEHJ25ockoXO2UPf-4c7-N6SK-Fr419q&export=download&confirm=t" preload="auto" crossorigin="anonymous"></audio>
+
+    <div class="floating-controls">
+        <button class="btn-control" id="btn-bgm" onclick="toggleBgm()">🎵 BGM OFF</button>
+        <button class="btn-control" id="btn-admin" onclick="toggleAdmin()">⚙️ ADMIN</button>
+    </div>
+
+    <!-- 📱 모바일 세로 스크롤 최적화 컨테이너 -->
+    <div class="app-container">
+        
+        <section class="hero">
+            <div class="coming-soon" data-key="hero-sub">Coming Soon</div>
+            <div class="logo-static" data-key="hero-title">trigr</div>
+            
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-box">
+                    <span class="countdown-time" id="cd-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-time" id="cd-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-time" id="cd-mins">00</span>
+                    <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-time" id="cd-secs">00</span>
+                    <span class="countdown-label">Secs</span>
+                </div>
+            </div>
+
+            <div class="slogan-box">
+                <div class="slogan-th" data-key="slogan-th">เล่นให้ดัง! รับให้ปัง! ยิ่งทำ ยิ่งมัน ยิ่งได้~~</div>
+                <div class="slogan-sub" data-key="slogan-trans">더 신나게 즐기고, 더 크게 받아라! 할수록 터지는 리워드<br>(Play Loud, Earn Big! The more you do, the more you get)</div>
+            </div>
+        </section>
+
+        <section class="brand-intro-section">
+            <img src="https://lh3.googleusercontent.com/d/1-9k-C0ToJ6xmVXLrYG7ohOid1JvRouv3" alt="trigr 로고" class="brand-intro-logo" onerror="this.style.display='none'">
+            <div class="brand-intro-text">
+                <span data-key="intro-desc">심심한 일상은 끝! 채팅과 위치 기반으로 새로운 사람들과 연결되어, 미션에 도전하고, 예상치 못한 즐거운 만남까지 경험해보세요.</span>
+                <span class="brand-intro-highlight" data-key="intro-hl">🚨 WARNING BORED?<br>ILLEGAL IN KHON KAEN.<br>SCAN. PLAY. TRIGR.</span>
+            </div>
+        </section>
+
+        <section class="neon-box" id="pre-reg-section">
+            <h2 class="section-title"><span data-key="prereg-title-hl">사전예약</span> 달성 이벤트</h2>
+            
+            <div class="current-count-display">
+                <span id="count-val">50,000</span> <span style="font-size:1.1rem; color:#fff; font-weight:700;">명 달성 중!</span>
+            </div>
+
+            <div class="admin-panel" id="admin-panel">
+                <div style="color:var(--gold); font-size:0.8rem; margin-bottom:5px;">[관리자 모드] 신청 인원수 조절 및 HTML 저장</div>
+                <input type="range" class="admin-slider" id="count-slider" min="0" max="50000" step="500" value="50000" oninput="updateProgress(this.value)">
+                <div style="margin-top: 10px;">
+                    <button class="btn-sub" style="background:var(--cyan); color:#000; width:100%;" onclick="downloadHTML()">💾 수정본 새 HTML로 다운로드</button>
+                </div>
+            </div>
+
+            <div class="cake-container">
+                <svg width="230" height="260" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="tier-1" class="svg-glow-purple" style="opacity: 1; transition: 0.5s;">
+                        <rect x="20" y="220" width="200" height="40" rx="8" fill="#2B2B2B" stroke="#A035E5" stroke-width="3"/>
+                        <path d="M20 230 Q 45 240, 70 230 T 120 230 T 170 230 T 220 230" fill="none" stroke="#DE5DE2" stroke-width="3"/>
+                        <text x="120" y="246" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle" font-family="Orbitron">10,000</text>
+                    </g>
+                    <g id="tier-2" class="svg-glow-pink" style="opacity: 1; transition: 0.5s;">
+                        <rect x="40" y="175" width="160" height="40" rx="8" fill="#2B2B2B" stroke="#DE5DE2" stroke-width="3"/>
+                        <path d="M40 185 Q 60 195, 80 185 T 120 185 T 160 185 T 200 185" fill="none" stroke="#46E6F2" stroke-width="3"/>
+                        <text x="120" y="201" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle" font-family="Orbitron">20,000</text>
+                    </g>
+                    <g id="tier-3" class="svg-glow-cyan" style="opacity: 1; transition: 0.5s;">
+                        <rect x="60" y="130" width="120" height="40" rx="8" fill="#2B2B2B" stroke="#46E6F2" stroke-width="3"/>
+                        <path d="M60 140 Q 75 150, 90 140 T 120 140 T 150 140 T 180 140" fill="none" stroke="#FFC93C" stroke-width="3"/>
+                        <text x="120" y="156" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle" font-family="Orbitron">30,000</text>
+                    </g>
+                    <g id="tier-4" class="svg-glow-purple" style="opacity: 1; transition: 0.5s;">
+                        <rect x="75" y="85" width="90" height="40" rx="8" fill="#2B2B2B" stroke="#A035E5" stroke-width="3"/>
+                        <path d="M75 95 Q 86 105, 97 95 T 120 95 T 142 95 T 165 95" fill="none" stroke="#DE5DE2" stroke-width="3"/>
+                        <text x="120" y="111" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle" font-family="Orbitron">40,000</text>
+                    </g>
+                    <g id="tier-5" class="svg-glow-cyan" style="opacity: 1; transition: 0.5s;">
+                        <rect x="90" y="40" width="60" height="40" rx="8" fill="#2B2B2B" stroke="#FFC93C" stroke-width="3"/>
+                        <path d="M90 50 Q 97 60, 105 50 T 120 50 T 135 50 T 150 50" fill="none" stroke="#46E6F2" stroke-width="3"/>
+                        <text x="120" y="66" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle" font-family="Orbitron">50,000</text>
+                        <rect x="116" y="15" width="8" height="25" fill="#DE5DE2"/>
+                        <ellipse id="flame" cx="120" cy="10" rx="5" ry="8" fill="#FFC93C" style="opacity:1;" />
+                    </g>
+                    <g id="sparkles" style="display: block;">
+                        <circle class="sparkle" cx="40" cy="80" r="3" fill="#FFC93C" />
+                        <circle class="sparkle" cx="200" cy="110" r="4" fill="#46E6F2" style="animation-delay: 0.2s;" />
+                        <circle class="sparkle" cx="70" cy="30" r="3" fill="#DE5DE2" style="animation-delay: 0.4s;" />
+                        <circle class="sparkle" cx="170" cy="50" r="5" fill="#FFC93C" style="animation-delay: 0.6s;" />
+                        <path class="sparkle" d="M20,150 L25,155 L20,160 L15,155 Z" fill="#46E6F2" style="animation-delay: 0.3s;"/>
+                        <path class="sparkle" d="M210,180 L215,185 L210,190 L205,185 Z" fill="#DE5DE2" style="animation-delay: 0.5s;"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="gauge-wrapper">
+                <div class="gauge-bar-bg">
+                    <div class="gauge-bar-fill" id="gauge-fill"></div>
+                </div>
+                <div class="gauge-markers">
+                    <div class="marker">1만</div>
+                    <div class="marker">2만</div>
+                    <div class="marker">3만</div>
+                    <div class="marker">4만</div>
+                    <div class="marker">5만</div>
+                </div>
+            </div>
+
+            <div class="reward-info">
+                <div class="reward-card active" id="reward-1">
+                    <span class="reward-num">1만명</span>
+                    <span class="reward-val" data-key="rw-1">10 Mango</span>
+                </div>
+                <div class="reward-card active" id="reward-2">
+                    <span class="reward-num">2만명</span>
+                    <span class="reward-val" data-key="rw-2">20 Mango</span>
+                </div>
+                <div class="reward-card active" id="reward-3">
+                    <span class="reward-num">3만명</span>
+                    <span class="reward-val" data-key="rw-3">30 Mango</span>
+                </div>
+                <div class="reward-card active" id="reward-4">
+                    <span class="reward-num">4만명</span>
+                    <span class="reward-val" data-key="rw-4">40 Mango</span>
+                </div>
+                <div class="reward-card active" id="reward-5">
+                    <span class="reward-num">5만명</span>
+                    <span class="reward-val" data-key="rw-5">50 Mango</span>
+                </div>
+            </div>
+            
+            <div class="mango-notice">
+                <strong style="font-size:0.95rem; display:block; margin-bottom:4px;">사전예약 달성 인원에 따라 전원에게 Mango 보상 지급.</strong>
+	        <span>망고는 트리거 제휴 가맹점에서 할인 받을수 있는 리워드(혜택) 입니다.<br>
+예시) 50망고 = 똔딴마켓에 가맹점에서 ‘주스’ 1잔을 <br>무료로 마실수 있는 정도의 혜택입니다.</span><br>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 24px 0;">
+
+            <div class="form-group">
+                <label class="form-label" data-key="form-os">OS 선택</label>
+                <div class="os-selector">
+                    <div class="os-btn selected" onclick="selectOS(this, 'Android')">Android</div>
+                    <div class="os-btn" onclick="selectOS(this, 'iOS')">iOS</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-key="form-phone">휴대폰 번호</label>
+                <div class="input-with-btn">
+                    <input type="tel" class="form-input" placeholder="숫자만 입력해 주세요" id="phone-input">
+                    <button type="button" class="btn-sub" onclick="sendAuthCode()" data-key="btn-send">인증번호 발송</button>
+                </div>
+            </div>
+
+            <div class="form-group" id="auth-code-group" style="display:none;">
+                <label class="form-label" data-key="form-auth">인증번호 입력</label>
+                <div class="input-with-btn">
+                    <input type="text" class="form-input" placeholder="인증번호 6자리">
+                    <button type="button" class="btn-sub" style="background:var(--cyan); color:#000;" onclick="alert('인증이 완료되었습니다.');" data-key="btn-verify">확인</button>
+                </div>
+            </div>
+
+            <div class="terms-group">
+                <label class="term-item term-all">
+                    <input type="checkbox" id="term-all" onchange="toggleAllTerms(this)">
+                    <span data-key="term-all-text">약관 전체동의</span>
+                </label>
+                <label class="term-item">
+                    <input type="checkbox" class="term-cb term-req" onchange="checkTermsState()">
+                    <span data-key="term-1">[필수] 만 14세 이상입니다.</span>
+                </label>
+                <label class="term-item">
+                    <input type="checkbox" class="term-cb term-req" onchange="checkTermsState()">
+                    <span data-key="term-2">[필수] 개인정보 수집 및 이용 동의</span>
+                </label>
+                <label class="term-item">
+                    <input type="checkbox" class="term-cb term-req" onchange="checkTermsState()">
+                    <span data-key="term-3">[필수] 광고성 정보 수신 동의</span>
+                </label>
+                <label class="term-item">
+                    <input type="checkbox" class="term-cb term-opt" onchange="checkTermsState()">
+                    <span data-key="term-4">[선택] 마케팅 활용 동의</span>
+                </label>
+            </div>
+
+            <button type="button" class="btn-submit" id="btn-submit" disabled onclick="submitForm()" data-key="btn-submit">
+                사전예약 하기
+            </button>
+
+            <div class="store-promo-group">
+                <div class="store-promo-text" data-key="store-promo-text">
+                    스토어 사전예약하고<br>앱을 설치하면 다양한 보상이 기다립니다!
+                </div>
+                <div class="store-btn-container">
+                    <a href="https://play.google.com" target="_blank" class="store-btn">
+                        <svg class="store-btn-icon" viewBox="0 0 24 24">
+                            <path fill="#00A0FF" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5Z"/>
+                            <path fill="#00F076" d="M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                            <path fill="#FFBA00" d="M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81Z"/>
+                            <path fill="#FF3333" d="M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12Z"/>
+                        </svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-sub">사전 예약하기</span>
+                            <span class="store-btn-title">Google Play</span>
+                        </div>
+                    </a>
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="store-btn">
+                        <svg class="store-btn-icon" viewBox="0 0 24 24">
+                            <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.09,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/>
+                        </svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-sub">사전 예약하기</span>
+                            <span class="store-btn-title">App Store</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 런칭 미션 & 오토바이 경품 (모바일 세로 깨짐 완벽 방지) -->
+        <section class="neon-box">
+            <h2 class="section-title"><span data-key="raffle-title-hl">사전예약 하고</span> 런칭미션 하면</h2>
+            
+            <div class="raffle-single">
+                <img src="https://lh3.googleusercontent.com/d/16LHLLJFoc0E1PLK65RgRXi9BQgLD9e1o" alt="Honda Wave 110i 오토바이 경품" class="promo-img-unified" onerror="this.style.display='none'">
+                <div class="raffle-name" data-key="rf-item-1">Honda Wave 110i</div>
+            </div>
+
+            <div class="raffle-mission-desc">
+                <div class="raffle-mission-title" data-key="nick-hl">⚡ 미션 수락하시겠습니까?</div>
+                <p class="raffle-mission-hl">
+                    새로운 앱 다운로드 받고<br><strong>런칭 미션에서 'trigr'</strong>를 입력!<br>
+                    Honda Wave 110i와 함께 콘캔을 달려보세요!
+                </p>
+                <p class="raffle-mission-sub">
+                    trigr 오픈 미션 단 한 번의 참여가 행운의 시작!<br>
+                    앱 다운로드하고 런칭 미션하면 추가 보상까지!
+                </p>
+                <div class="disclaimer" data-key="rf-disclaimer">*실물과 다를 수 있습니다</div>
+            </div>
+        </section>
+
+        <!-- 사전예약 바로가기 스크롤 버튼 -->
+        <a href="#pre-reg-section" class="btn-scroll-action">
+            🚀 사전예약 하러 가기
+        </a>
+
+        <!-- 5. 톤딴 마켓 오픈 행사 섹션 -->
+        <section class="neon-box">
+            <img src="https://lh3.googleusercontent.com/d/1s-nNiacy0GQAeMyu3daqGDUSg6QO6--Z" alt="trigr Open Event Title" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 12px; display: block; filter: drop-shadow(0 0 10px rgba(70, 230, 242, 0.4));" onerror="this.style.display='none'">
+            
+            <img src="https://lh3.googleusercontent.com/d/15H9cNUUC_PKWIRxsWeD8FmvEl8pO8We9" alt="trigr Open Event Image" class="promo-img-unified" style="border: 1px solid rgba(222, 93, 226, 0.4); box-shadow: 0 0 15px rgba(222, 93, 226, 0.2); filter: none; max-height: 250px; object-fit: cover; object-position: center top; margin-top: 0;" onerror="this.style.display='none'">
+
+            <div class="open-event-card">
+                <div class="open-event-date">
+                    📍 8.22 (Sat) Ton Tann Market<br>Main Stage & Plaza
+                </div>
+                <ul class="open-event-list">
+                    <li>Khon Kaen Revival Gut ( / 굿 / )</li>
+                    <li>Live Reading</li>
+                    <li>Group Aerobics</li>
+                    <li>Closing Djing</li>
+                </ul>
+            </div>
+
+            <!-- 노슬비 인증 미션 박스 -->
+            <div class="mission-special-box">
+                <span class="mission-special-title">📸 노슬비 Stage 인증하고 Mango 받자!</span>
+                <p style="font-size: 0.84rem; color: #E0E0E0; line-height: 1.6; margin-bottom: 10px; word-break: keep-all;">
+                    현장의 열기, 친구들과 함께한 순간,<br>가장 신났던 장면까지 무엇이든 OK!
+                </p>
+                <p style="font-size: 0.88rem; color: var(--gold); line-height: 1.5; font-weight: 700; word-break: keep-all; text-shadow: 0 0 5px rgba(255, 201, 60, 0.3);">
+                    새롭게 바뀐 trigr에 생생한 현장 인증과<br>후기를 등록하면 20 Mango를 드립니다! 🥭
+                </p>
+            </div>
+        </section>
+
+        <!-- 사전예약 바로가기 스크롤 버튼 -->
+        <a href="#pre-reg-section" class="btn-scroll-action">
+            🚀 사전예약 하러 가기
+        </a>
+
+        <!-- 6. 앱 이벤트 소개 -->
+        <section class="neon-box">
+            <h2 class="section-title">콘캔이 놀이터가 되는 <span data-key="evt-title-hl">EVENT</span></h2>
+            <div class="event-intro" data-key="evt-intro">
+                8.18일 새로운 trigr의 다양한 이벤트에 참여하고<br>경품과 Mango 받아가세요!
+            </div>
+
+            <div class="mission-group">
+                <div class="mission-header">
+                    <span class="mission-title-text">🎧 Samsung Galaxy Buds4 Pro</span>
+                    <img src="https://lh3.googleusercontent.com/d/1m_uohUWp5i5xnCftSWeJZvZcsS0Ps0mz" alt="Galaxy Buds4 Pro" class="event-info-img" onerror="this.style.display='none'">
+                    <span class="mission-count">3명</span>
+                </div>
+                <div class="mission-desc-text">
+                    <strong style="color: var(--cyan); font-size: 0.88rem;">trigr 미션을 주도하라!</strong><br><br>
+                    친구들이 참여하고 싶어지는 재미있는 미션을 직접 만들어 보세요.<br><br>
+                    많은 참여를 이끌어낸 인기 미션일수록 당첨 확률 UP! 📈<br>
+                    베스트 미션 크리에이터에게는 Samsung Galaxy Buds4 Pro의 주인공이 될 기회가 주어집니다.<br><br>
+                    당신의 아이디어가 trigr를 움직입니다!
+                </div>
+            </div>
+
+            <div class="mission-group">
+                <div class="mission-header">
+                    <span class="mission-title-text">🐹 치이카와 미니 피규어 컬렉션 BOX</span>
+                    <img src="https://lh3.googleusercontent.com/d/1-WaslQNHuU9UjCAQfbNK-DZiEigGdvDU" alt="치이카와 피규어" class="event-info-img" onerror="this.style.display='none'">
+                    <span class="mission-count">5명</span>
+                </div>
+                <div class="mission-desc-text">
+                    <strong style="color: var(--cyan); font-size: 0.88rem;">너무 귀여워서 못 먹겠다고? 그래도 먹어야지!</strong><br><br>
+                    캐릭터 디저트, 동물 모양 빵, 귀여운 음료까지!<br>
+                    보는 순간 심쿵했던 음식 사진 또는 영상을 등록해 주세요.<br><br>
+                    가장 귀엽고 특별한 인증을 남기면 귀여운 피규어를 드립니다!<br><br>
+                    귀여움으로 승부해 보세요!
+                </div>
+            </div>
+
+            <div class="mission-group" style="margin-bottom: 0;">
+                <div class="mission-header">
+                    <span class="mission-title-text">🏪 세븐일레븐 3만원 쿠폰</span>
+                    <img src="https://lh3.googleusercontent.com/d/1y3zlyqcBUbkfe5-TxFkkjdOJOADL73qT" alt="세븐일레븐 쿠폰" class="event-info-img" onerror="this.style.display='none'">
+                    <span class="mission-count">30명</span>
+                </div>
+                <div class="mission-desc-text">
+                    <strong style="color: var(--cyan); font-size: 0.88rem;">당신의 도파민을 공유하세요!</strong><br><br>
+                    오늘 가장 행복했던 순간,<br>
+                    웃음이 터졌던 순간,<br>
+                    심장이 뛰었던 순간을 사진이나 영상으로 남겨보세요!<br><br>
+                    당신의 도파민을 trigr에 등록하면,<br>
+                    추가 도파민이 터질 수 있도록 세븐일레븐 쿠폰을 선물합니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- 사전예약 바로가기 스크롤 버튼 -->
+        <a href="#pre-reg-section" class="btn-scroll-action">
+            🚀 사전예약 하러 가기
+        </a>
+
+        <!-- 7. 기대평 게시판 & SNS 공유 이벤트 -->
+        <section class="neon-box">
+            <h2 class="section-title">trigr <span data-key="board-title-hl">기대평 남기기</span></h2>
+            <div class="event-intro" style="margin-bottom: 18px;">
+                "trigr 오픈에 대한 기대평이나 응원의 메시지를 남겨주세요!<br>작성해 주신 글은 실시간으로 등록됩니다."
+            </div>
+
+            <div class="share-promo-box">
+                <img src="https://lh3.googleusercontent.com/d/1y3zlyqcBUbkfe5-TxFkkjdOJOADL73qT" alt="세븐일레븐 상품권" class="share-promo-img" onerror="this.style.display='none'">
+                
+                <div style="font-size: 0.84rem; color: #E0E0E0; line-height: 1.6; margin-bottom: 16px; word-break: keep-all;">
+                    <strong style="color: var(--gold); display: block; margin-bottom: 6px; font-size: 1.05rem;">🎁 공유하고 세븐일레븐 쿠폰 받자!</strong>
+                    사전예약 페이지를 공유하고 SNS에 등록한 후,<br>
+                    아래에 <span style="color: var(--cyan); font-weight: 700;">SNS 링크와 응원 메시지</span>를 남겨주세요.<br>
+                    추첨을 통해 <strong>세븐일레븐 3만원권(10명)</strong>을 드립니다!
+                </div>
+
+                <button type="button" class="btn-sub" onclick="copyShareUrl()" style="padding: 11px 18px; background: var(--gray-dark); border: 1px solid var(--cyan); color: var(--cyan); border-radius: 20px; box-shadow: 0 0 12px rgba(70, 230, 242, 0.2); width: 100%;">
+                    🔗 사전예약 페이지 URL 복사하기
+                </button>
+            </div>
+
+            <div class="board-input-box">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <input type="text" class="form-input" placeholder="닉네임 (예: 콘캔러버)" id="board-author" style="width: 100%; margin-bottom: 8px;">
+                    <textarea class="form-input" placeholder="여기에 공유하신 SNS 링크와 함께 응원 메시지를 적어주세요!" id="board-text" rows="3" style="width: 100%; resize: none; font-family: inherit;"></textarea>
+                </div>
+                <button type="button" class="btn-sub" onclick="addComment()" style="width: 100%; padding: 14px; background: linear-gradient(90deg, var(--pink), var(--purple)); font-size: 0.95rem; box-shadow: 0 0 12px rgba(222, 93, 226, 0.4);">
+                    💬 기대평 등록하기
+                </button>
+            </div>
+
+            <div class="board-comment-list" id="comment-list">
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">✨ KhonKaen_Boy</span>
+                        <span class="comment-time">방금 전</span>
+                    </div>
+                    <div class="comment-text">톤딴 마켓 행사 너무 기대됩니다! 친구들이랑 사전예약 다 했어요 🔥 Mango 포인트도 빨리 받고 싶어요!</div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">🎉 삼각김밥</span>
+                        <span class="comment-time">3분 전</span>
+                    </div>
+                    <div class="comment-text">오토바이 경품 제발 제발 저에게로 오길... 🙏 8월 20일 런칭하자마자 바로 접속합니다!</div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">💃 Aerobics_Queen</span>
+                        <span class="comment-time">12분 전</span>
+                    </div>
+                    <div class="comment-text">รอคอยงานวันที่ 22 ส.ค. นี้เลยค่ะ! อยากไปร่วม Group Aerobics กับ DJing ปิดท้ายมากกก ปังแน่นอน! ~~</div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">🚀 trigr_fan</span>
+                        <span class="comment-time">35분 전</span>
+                    </div>
+                    <div class="comment-text">위치 기반 미션이라니 컨셉 진짜 신선하네요! 태국 콘캔에서 이런 재밌는 어플이 나오다니 응원합니다 짱짱!!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 푸터 -->
+        <footer class="footer">
+            <a href="https://www.instagram.com/trigrthai.official/" target="_blank" class="btn-insta">
+                <span>📸 @trigr_official Follow</span>
+            </a>
+            <div class="footer-info" data-key="footer-desc">
+                본 사전예약 이벤트는 trigr 공식 런칭 전 진행되는 프로모션입니다.<br>
+                문의사항은 공식 인스타그램 DM을 이용해 주시기 바랍니다.
+            </div>
+            <div class="footer-domain">trigr.Thailand</div>
+        </footer>
+
+    </div>
+
+    <script>
+        /* 1. 카운트다운 타이머 로직 */
+        const targetDate = new Date('2026-08-18T08:00:00+07:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('cd-days').innerText = "00";
+                document.getElementById('cd-hours').innerText = "00";
+                document.getElementById('cd-mins').innerText = "00";
+                document.getElementById('cd-secs').innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* 2. BGM 제어 */
+        const bgm = document.getElementById('bgm');
+        const btnBgm = document.getElementById('btn-bgm');
+        let isPlaying = false;
+
+        function toggleBgm() {
+            if (!isPlaying) {
+                bgm.play().then(() => {
+                    isPlaying = true;
+                    btnBgm.innerText = "🎵 BGM ON";
+                    btnBgm.classList.add('active');
+                }).catch(e => {
+                    alert("음원 파일을 불러올 수 없습니다. (TRIGR_TON_TANN_.mp3)");
+                });
+            } else {
+                bgm.pause();
+                isPlaying = false;
+                btnBgm.innerText = "🎵 BGM OFF";
+                btnBgm.classList.remove('active');
+            }
+        }
+
+        /* 3. 인원수 및 게이지/케이크 연동 로직 */
+        function updateProgress(val) {
+            const count = parseInt(val);
+            document.getElementById('count-val').innerText = count.toLocaleString();
+
+            let percent = (count / 50000) * 100;
+            if(percent > 100) percent = 100;
+            document.getElementById('gauge-fill').style.width = percent + '%';
+
+            const tiers = [
+                { limit: 10000, id: 'tier-1', rw: 'reward-1' },
+                { limit: 20000, id: 'tier-2', rw: 'reward-2' },
+                { limit: 30000, id: 'tier-3', rw: 'reward-3' },
+                { limit: 40000, id: 'tier-4', rw: 'reward-4' },
+                { limit: 50000, id: 'tier-5', rw: 'reward-5' }
+            ];
+
+            tiers.forEach(tier => {
+                const elTier = document.getElementById(tier.id);
+                const elRw = document.getElementById(tier.rw);
+                if (count >= tier.limit) {
+                    if(elTier) elTier.style.opacity = '1';
+                    if(elRw) elRw.classList.add('active');
+                } else {
+                    if(elTier) elTier.style.opacity = '0.3';
+                    if(elRw) elRw.classList.remove('active');
+                }
+            });
+
+            const flame = document.getElementById('flame');
+            const sparkles = document.getElementById('sparkles');
+            if (count >= 50000) {
+                if(flame) flame.style.opacity = '1';
+                if(sparkles) sparkles.style.display = 'block';
+            } else {
+                if(flame) flame.style.opacity = '0';
+                if(sparkles) sparkles.style.display = 'none';
+            }
+        }
+        updateProgress(50000);
+
+        /* 4. 폼 및 약관 제어 로직 */
+        function selectOS(el, os) {
+            document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function sendAuthCode() {
+            const phone = document.getElementById('phone-input').value;
+            if (!phone || phone.length < 8) {
+                alert("유효한 휴대폰 번호를 입력해 주세요.");
+                return;
+            }
+            alert("인증번호(6자리)가 발송되었습니다. [목업]");
+            document.getElementById('auth-code-group').style.display = 'block';
+        }
+
+        function toggleAllTerms(source) {
+            const cbs = document.querySelectorAll('.term-cb');
+            cbs.forEach(cb => cb.checked = source.checked);
+            checkTermsState();
+        }
+
+        function checkTermsState() {
+            const allCbs = document.querySelectorAll('.term-cb');
+            const reqCbs = document.querySelectorAll('.term-req');
+            
+            let allChecked = true;
+            allCbs.forEach(cb => {
+                if (!cb.checked) allChecked = false;
+            });
+            document.getElementById('term-all').checked = allChecked;
+
+            let reqChecked = true;
+            reqCbs.forEach(cb => {
+                if (!cb.checked) reqChecked = false;
+            });
+            document.getElementById('btn-submit').disabled = !reqChecked;
+        }
+
+        function submitForm() {
+            alert("trigr 사전예약이 완료되었습니다! 8월 20일 런칭일에 만나요🔥");
+        }
+
+        /* 기대평 남기기 게시판 기능 로직 */
+        function addComment() {
+            const authorInput = document.getElementById('board-author');
+            const textInput = document.getElementById('board-text');
+            const commentList = document.getElementById('comment-list');
+
+            const author = authorInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!author) {
+                alert("닉네임을 입력해 주세요!");
+                authorInput.focus();
+                return;
+            }
+            if (!text) {
+                alert("기대평 내용을 입력해 주세요!");
+                textInput.focus();
+                return;
+            }
+
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+            newComment.innerHTML = `
+                <div class="comment-meta">
+                    <span class="comment-author">✨ ${author}</span>
+                    <span class="comment-time" style="color: var(--cyan); font-weight: 700;">방금 전 (NEW)</span>
+                </div>
+                <div class="comment-text">${text}</div>
+            `;
+
+            commentList.insertBefore(newComment, commentList.firstChild);
+
+            authorInput.value = '';
+            textInput.value = '';
+            alert("소중한 기대평이 등록되었습니다! 🎉");
+        }
+
+        /* 5. 관리자 모드 및 HTML 다운로드 */
+        let isAdmin = false;
+        function toggleAdmin() {
+            isAdmin = !isAdmin;
+            const btnAdmin = document.getElementById('btn-admin');
+            const panel = document.getElementById('admin-panel');
+            
+            const editableElements = document.querySelectorAll('[data-key], .section-title, .mission-title-text, .raffle-desc, .store-promo-text, .open-event-date, .comment-text');
+            if (isAdmin) {
+                btnAdmin.classList.add('active');
+                btnAdmin.innerText = "⚙️ ADMIN ON";
+                panel.classList.add('show');
+                editableElements.forEach(el => el.setAttribute('contenteditable', 'true'));
+                alert("관리자 모드가 활성화되었습니다. 페이지 내 텍스트를 직접 수정하고, 인원수 슬라이더를 조절할 수 있습니다.");
+            } else {
+                btnAdmin.classList.remove('active');
+                btnAdmin.innerText = "⚙️ ADMIN";
+                panel.classList.remove('show');
+                editableElements.forEach(el => el.removeAttribute('contenteditable'));
+            }
+        }
+
+        function downloadHTML() {
+            const wasAdmin = isAdmin;
+            if (isAdmin) toggleAdmin();
+
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'trigr_preregistration_index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            if (wasAdmin) toggleAdmin();
+        }
+
+        /* URL 복사 (공유하기) 기능 */
+        function copyShareUrl() {
+            const url = "https://trigrthailand.netlify.app"; 
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert("사전예약 페이지 URL이 복사되었습니다!\nSNS에 공유하고 링크를 기대평에 남겨주세요.");
+                }).catch(err => {
+                    console.error("복사 실패:", err);
+                });
+            } else {
+                const tempInput = document.createElement("input");
+                tempInput.value = url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                alert("사전예약 페이지 URL이 복사되었습니다!\nSNS에 공유하고 링크를 기대평에 남겨주세요.");
+            }
+        }
+    </script>
+</body>
+</html>
